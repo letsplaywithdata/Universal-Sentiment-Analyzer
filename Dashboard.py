@@ -2,7 +2,11 @@ import streamlit as st
 import pandas as pd
 import spacy
 import io
-import en_core_web_sm
+from spacy.cli import download
+download('en_core_web_sm')
+#download('en_core_web_sm')
+#nlp = spacy.load('en')
+#import en_core_web_sm
 from spacy.lang.en import English
 import numpy as np
 #from scipy import 
@@ -21,7 +25,7 @@ from pylab import rcParams
 import matplotlib.pyplot as plt
 en = English()
 
-
+nlp = spacy.load('en_core_web_sm')
 def explore_data(dataset):
     if dataset == "Iris":
         df = pd.read_csv('C:/Users/yoges/OneDrive/Desktop/NLPProject/data/Iris_EDA_Web_App/iris.csv')
@@ -352,8 +356,12 @@ def tokenize_full(docs, token_options, showtable):
     alpha_only: If True, removes all non-alpha characters
     lemma: If True, lemmatizes words
     """
-    nlp = en_core_web_sm.load()
-    model = en
+
+    ##
+    #download('en_core_web_sm')
+    #nlp = spacy.load('en_core_web_sm')
+    model = nlp
+    #model = en
     tokenized_docs = []
     for d in docs:
         parsed = model(d)
@@ -564,7 +572,7 @@ def getVocab(tokenized):
     return (vocab) 
 
 def gloveVecsDict(vocab):
-    nlp = en_core_web_sm.load()
+    nlp = spacy.load('en_core_web_sm')
     glove_vecs_dict = {}
     for k, v in vocab.items():
       glove_vecs_dict[k] = nlp(k).vector
