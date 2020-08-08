@@ -25,6 +25,7 @@ from pylab import rcParams
 import matplotlib.pyplot as plt
 en = English()
 
+nlp1 = spacy.load('en')
 nlp = spacy.load('en_core_web_sm')
 def explore_data(dataset):
     if dataset == "Movie Reviews":
@@ -362,7 +363,7 @@ def tokenize_full(docs, token_options, showtable):
     ##
     #download('en_core_web_sm')
     #nlp = spacy.load('en_core_web_sm')
-    model = nlp
+    model = nlp1
     #model = en
     tokenized_docs = []
     for d in docs:
