@@ -26,8 +26,8 @@ from pylab import rcParams
 import matplotlib.pyplot as plt
 en = English()
 
-nlp1 = spacy.load('en')
-nlp = spacy.load('en_core_web_sm')
+#nlp1 = spacy.load('en')
+#nlp = spacy.load('en_core_web_sm')
 def explore_data(dataset):
     if dataset == "Movie Reviews":
         df = pd.read_csv('data/movie_reviews.csv')
@@ -47,7 +47,7 @@ def main():
 
     st.title("Universal Sentiment Analyzer")
 
-    activities = ["Data Analysis","Tokenisation","Vectorisation", "Modelling", "About"]
+    activities = ["Data Analysis","Tokenization","Vectorization", "Modeling", "About"]
     choice = st.sidebar.selectbox("Select from the Following: ",activities)
 
     #data = st.selectbox("Select dataset to work on", ["Iris", "Spam", "UploadCSV"])
@@ -62,7 +62,7 @@ def main():
         #dataset = explore_data(data)
         dataanalysisfunc(dataset)
 
-    if choice == 'Tokenisation':
+    if choice == 'Tokenization':
         st.subheader("Let's Tokenize our Data")
         #data = st.selectbox(
         #    "Select dataset to work on", ["Iris", "Spam", "UploadCSV"])
@@ -75,9 +75,12 @@ def main():
         token_options= st.multiselect("Tokenization methods to perform", methods, default= 
                     ["Lowercase","Alpha_Only"])
         st.write(f"You choose following options :{token_options}")
-        tokenized = tokenize_full(Column_options, token_options, showtable=True)
-        new_df = pd.DataFrame(tokenized,columns=['Modified Sentences'])
-        st.dataframe(new_df)
+        if st.button("Let's Tokenize"):
+            tokenized = tokenize_full(Column_options, token_options, showtable=True)
+            new_df = pd.DataFrame(tokenized,columns=['Modified Sentences'])
+            st.dataframe(new_df)
+        else:
+            st.write("Perform any operation!")
         #dataset['clean_msg']=data[Column_options].apply(tokenizer)
         #entity_analyzer(Column_options)
         #c_sentences = [ sent for sent in blob.sentences ]
@@ -87,7 +90,7 @@ def main():
         #st.dataframe(new_df)
         
             
-    if choice == 'Vectorisation':
+    if choice == 'Vectorization':
         st.subheader("Creating Vectors from Tokens")
         data_options = ["Movie Reviews","Spam","Amazon Reviews","UploadCSV"]
         data = st.selectbox("Select dataset to work on", data_options)
@@ -221,8 +224,8 @@ def main():
                 
                 #new_df = pd.DataFrame(zip(c_sentences,c_sentiment),columns=['Sentence','Sentiment'])
                 #st.dataframe(new_df)
-    if choice == 'Modelling':
-        st.subheader("Modelling using Basic Supervised Machine Learning Models")
+    if choice == 'Modeling':
+        st.subheader("Modeling using Basic Supervised Machine Learning Models")
         data_options = ["Movie Reviews","Spam","Amazon Reviews","UploadCSV"]
         data = st.selectbox("Select dataset to work on", data_options)
         dataset= explore_data(data)
@@ -364,8 +367,14 @@ def tokenize_full(docs, token_options, showtable):
     ##
     #download('en_core_web_sm')
     #nlp = spacy.load('en_core_web_sm')
-    model = nlp1
-    #model = en
+    #nlp = spacy.load('en')
+    #model = nlp
+    modelss= ["en", "en_core_web_sm"]
+    select_model = st.selectbox("Select Model for Tokenisation",modelss)
+    if select_model == "en":
+        model = en
+    else:
+        model = spacy.load('en_core_web_sm')
     tokenized_docs = []
     for d in docs:
         parsed = model(d)
