@@ -27,10 +27,12 @@ en = English()
 
 nlp = spacy.load('en_core_web_sm')
 def explore_data(dataset):
-    if dataset == "Iris":
-        df = pd.read_csv('C:/Users/yoges/OneDrive/Desktop/NLPProject/data/Iris_EDA_Web_App/iris.csv')
+    if dataset == "Movie Reviews":
+        df = pd.read_csv('data/movie_reviews.csv')
     elif dataset == "Spam":
-        df = pd.read_csv('C:/Users/yoges/OneDrive/Desktop/NLPProject/data/spam_processed.csv')
+        df = pd.read_csv('data/spam_processed.csv')
+    elif dataset == "Amazon Reviews":
+        df = pd.read_csv('data/amazon_subset.csv')
     else:
         st.set_option('deprecation.showfileUploaderEncoding', False)
         data_file = st.file_uploader("Upload CSV",type=['csv'])
@@ -50,7 +52,7 @@ def main():
     #dataset= explore_data(data)
     if choice == 'Data Analysis':
         st.subheader("Data Analysis")
-        data_options = ["Iris","Spam","UploadCSV"]
+        data_options = ["Movie Reviews","Spam","Amazon Reviews","UploadCSV"]
         data = st.selectbox("Select dataset to work on", data_options)
         dataset= explore_data(data)
         #data = st.selectbox(
@@ -63,7 +65,7 @@ def main():
         #data = st.selectbox(
         #    "Select dataset to work on", ["Iris", "Spam", "UploadCSV"])
         #dataset = explore_data(data)
-        data_options = ["Iris","Spam","UploadCSV"]
+        data_options = ["Movie Reviews","Spam","Amazon Reviews","UploadCSV"]
         data = st.selectbox("Select dataset to work on", data_options)
         dataset= explore_data(data)
         Column_options = columnselector(dataset)
@@ -85,7 +87,7 @@ def main():
             
     if choice == 'Vectorisation':
         st.subheader("Creating Vectors from Tokens")
-        data_options = ["Iris","Spam","UploadCSV"]
+        data_options = ["Movie Reviews","Spam","Amazon Reviews","UploadCSV"]
         data = st.selectbox("Select dataset to work on", data_options)
         dataset= explore_data(data)
         Column_options = columnselector(dataset)
@@ -219,7 +221,7 @@ def main():
                 #st.dataframe(new_df)
     if choice == 'Modelling':
         st.subheader("Modelling using Basic Supervised Machine Learning Models")
-        data_options = ["Iris","Spam","UploadCSV"]
+        data_options = ["Movie Reviews","Spam","Amazon Reviews","UploadCSV"]
         data = st.selectbox("Select dataset to work on", data_options)
         dataset= explore_data(data)
         select_rows, dff = subsetcolumn(dataset)
