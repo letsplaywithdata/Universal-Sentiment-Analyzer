@@ -3,6 +3,7 @@ import pandas as pd
 import spacy
 import io
 from spacy.cli import download
+download('en')
 download('en_core_web_sm')
 #download('en_core_web_sm')
 #nlp = spacy.load('en')
