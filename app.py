@@ -183,7 +183,7 @@ def main():
        
         
         elif select_options == "Advance":
-            pretrained_vectors = ["Glove Vectors","Word2Vec"]
+            pretrained_vectors = ["Word2Vec","Glove Vectors"]
             #st.write("Please select one of the options from Left Sidebar")
             select_pretrain = st.selectbox("Select Pre Trained Vectors",pretrained_vectors)
             st_showstatus = st.selectbox("Perform One of the following:", ("Closest Word Embedding", "Similar Words to Combination of words","N-pairs of Words in Vector Form","Scatter Plot of Word Embeddings"))
@@ -196,6 +196,7 @@ def main():
 
             if st_showstatus == "Closest Word Embedding":
                 if select_pretrain == "Glove Vectors":
+                    st.warning("We have used spacy for Glove Vectors which results in slow processing. Please be patient")
                     close_words, index = (option_closest(glove_vecs_dict))
                     #st.table(pd.DataFrame(close_words, columns= close_words[index]))
                     if st.button("Find Closest words"):
@@ -213,6 +214,7 @@ def main():
                         st.write("Perform any operation above.")
             if st_showstatus == "Similar Words to Combination of words":
                 if select_pretrain == "Glove Vectors":
+                    st.warning("We have used spacy for Glove Vectors which results in slow processing. Please be patient")
                     closest_words, index1,index2,index3, No_of_words = options_closest(glove_vecs_dict)
                     close_words1 = closest_index_embeddings(glove_vecs_dict, index = index1)[0:No_of_words]
                     close_words2 = closest_index_embeddings(glove_vecs_dict, index = index2)[0:No_of_words] 
@@ -242,6 +244,7 @@ def main():
                         st.write("Perform any operation above.")
             if st_showstatus == "N-pairs of Words in Vector Form":
                     if select_pretrain == "Glove Vectors":
+                        st.warning("We have used spacy for Glove Vectors which results in slow processing. Please be patient")
                         n_pairs = st.slider("Select No of pairs you want to see:", 0, 10, 2)
                         pairs = displayNPairsDict(mydict = glove_vecs_dict, n_pairs = n_pairs)
                         options = ["Array", "Table"]
@@ -264,6 +267,7 @@ def main():
             
             if st_showstatus == "Scatter Plot of Word Embeddings":
                 if select_pretrain == "Glove Vectors":
+                    st.warning("We have used spacy for Glove Vectors which results in slow processing. Please be patient")
                     no_words = st.slider("Select no of Words you want to see in Scatter plot", 0,50,20)
                     #%matplotlib inline
                     spacialScatterPlot(glove_vecs_dict, n_words = no_words, model = "Glove")
