@@ -712,8 +712,8 @@ def word2vecDict(tokenized):
         word2vec_dict[key] = model.wv[key]
     return word2vec_dict
 
-def closest_index_embeddings(mydict, index):
-    return sorted(mydict.keys(), key=lambda word: spatial.distance.euclidean(mydict[word], mydict[list(mydict.keys())[index]]))
+#def closest_index_embeddings(mydict, index):
+#    return sorted(mydict.keys(), key=lambda word: spatial.distance.euclidean(mydict[word], mydict[list(mydict.keys())[index]]))
 
 def closest_word_embeddings(mydict, embedding):
     return (sorted(mydict.keys(), key=lambda word: spatial.distance.euclidean(mydict[word], embedding)))
@@ -726,7 +726,7 @@ def option_closest(my_dict):
     st.write("Select Closest Word Embedding to a word of Index 'i'")
     index = st.slider("Select value of Index", 0,20,5)
     No_of_words = st.slider("Select Number of Words closest to index word",0,20,10)
-    close_words = closest_index_embeddings(my_dict, index = index)[0:No_of_words]
+    close_words = (closest_word_embeddings(my_dict, my_dict[list(my_dict.keys())[index]])[0:No_of_words])
     return close_words,index
 
 def options_closest(my_dict):
