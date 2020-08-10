@@ -698,8 +698,15 @@ def getVocab(tokenized):
 
 def gloveVecsDict(vocab):
     glove_vecs_dict = {}
+    try:
+        nlp = spacy.load('en_core_web_sm')
+    except OSError:
+        st.write('Downloading language model for the spaCy POS tagger\n')
+        from spacy.cli import download
+        download('en_core_web_sm')
+        nlp = spacy.load('en_core_web_sm')
     #glove_vecs_dict = np.zeros(shape=(len(vocab), 300))
-    nlp = spacy.load('en_core_web_sm')
+    #nlp = spacy.load('en_core_web_sm')
     #glove_vecs_dict = {}
     for k, v in vocab.items():
       glove_vecs_dict[k] = nlp(k).vector
