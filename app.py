@@ -607,10 +607,10 @@ def topicmodelling(make_vectors,model,vectors,model2,vectors2,no_of_sentences,wo
     temp_cv,temp_count_vecs = vectorizetemp(Column_options)
     st_cosine = st.checkbox("Cosine Similarity")
     if st_cosine:
-        cosine_topic = st.multiselect("Select Topic for which you want to check cosine similarirty",df_topic_model.iloc[:,0])
+        cosine_topic = st.selectbox("Select Topic for which you want to check cosine similarirty",df_topic_model.iloc[:,0])
         #cv, count_vecs = vectorize("Count Vectors",Column_options, showtopwords=False)
         #seed_idxs = [model.vocabulary_[w] for w in cosine_topic]
-        words = cosine_topic[0].split()
+        words = cosine_topic.split()
         st.write(words)
         seed_idxs = [temp_cv.vocabulary_[w] for w in words]
         st.write(cosine_similarity(word_level[seed_idxs]))
@@ -719,8 +719,8 @@ def word2vecDict(tokenized):
         word2vec_dict[key] = model.wv[key]
     return word2vec_dict
 
-#def closest_index_embeddings(mydict, index):
-#    return sorted(mydict.keys(), key=lambda word: spatial.distance.euclidean(mydict[word], mydict[list(mydict.keys())[index]]))
+def closest_index_embeddings(mydict, index):
+    return sorted(mydict.keys(), key=lambda word: spatial.distance.euclidean(mydict[word], mydict[list(mydict.keys())[index]]))
 
 def closest_word_embeddings(mydict, embedding):
     return (sorted(mydict.keys(), key=lambda word: spatial.distance.euclidean(mydict[word], embedding)))
