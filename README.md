@@ -22,6 +22,7 @@ Things we have tried to cover:
     This part is included to tokenize the reviews/sentences and see the changes with the help of just few clicks.
     Tokenization methods included : Alpha only, Lowercase only, Stopwords, Lemmatization.(At this point, entities are not supported in this app.)
     To make this work, you have to select the column containing REVIEWS/TEXT. Selecting a column with boolean value will result in an error.
+![image](https://user-images.githubusercontent.com/50980928/158045745-95d9cc45-9d85-4d60-a91c-b33dae623cc9.png)
 
 3. Vectorization :
 
