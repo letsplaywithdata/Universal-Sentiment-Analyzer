@@ -1,9 +1,13 @@
-1.	We choose a dataset to work with and do some data analysis on it. Considering factors like, what is the shape of dataset, how many variables are there, how many rows(data) are there and is there any feature that has a lot of missing values.
+1.	We choose a dataset to work with and do some data analysis on it. Considering factors like, what is the shape of dataset, how many variables are there, 
+how many rows(data) are there and is there any feature that has a lot of missing values.
 2.	We try to figure out if we want to remove any feature/column that is not required or for which data is inadequate
 3.	Our next step is generally Tokenizing the data. 
-a.	Tokenizing is to remove Stopwords(is, they, unless or any other common words that are not necessary sometimes in out predictions), take only Lower case , take only Alpha numeric characters, lemmatizing the words (Converting a word to its root word in English) 
+a.	Tokenizing is to remove Stopwords(is, they, unless or any other common words that are not necessary sometimes in out predictions), take only Lower case , 
+take only Alpha numeric characters, lemmatizing the words (Converting a word to its root word in English) 
 b.	This tokenization strategy helps in improving the accuracy of predicting a sentiment to a significant number sometimes.
-4.	After tokenization, we move on to make Vectors of the same words/sentences. There are 2 different strategies that I have read about and gone through in this course. Either to convert those tokenized words directly into Vectors or combine the words again into a review (sentence) that it was originally part of and convert it into a Vectors.
+4.	After tokenization, we move on to make Vectors of the same words/sentences. There are 2 different strategies that I have read about and gone through in this 
+course. Either to convert those tokenized words directly into Vectors or combine the words again into a review (sentence) that it was originally part of and convert
+ it into a Vectors.
 The former one is called Word level Vectorization and the latter one is called Document level vectorization (Document = Sentence/Review)
 There are 4 basic methods to tokenize on Word Level :   
 a.       Count Vectors
@@ -21,8 +25,10 @@ After applying the above Vectorisation methods, I have seen that :
 5.	Our last step is to perform Modeling by using previous methods and incorporating them into our modelling pre-processing.
 Since there are a lot of models out there. I have worked on 4 Models based on Classifier (SVM, Naïve Bayes, Gradient Boosting and Random Forest). 
 
-To see how much they work or not, I have deployed my own platform where people can upload any dataset and work on the above methods I have explained and see the results.
-This comes in very handy as even a person who just want to see the results and work on getting insights on the methods explained don’t need to code a bit and can directly see 
+To see how much they work or not, I have deployed my own platform where people can upload any dataset and work on the above methods I have explained 
+and see the results.
+This comes in very handy as even a person who just want to see the results and work on getting insights on the methods explained don’t need to code a bit 
+and can directly see 
 the output in just 2-5 minutes.
 Here is the link to my deployed project:
 https://universal-sentiment.herokuapp.com/
