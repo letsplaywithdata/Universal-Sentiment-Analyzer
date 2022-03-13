@@ -7,6 +7,8 @@ Things we have tried to cover:
     The whole idea is divided into 4 major parts : "Data Analysis", "Tokenization", "Visualization" and "Modeling" and an "About" Section.
     There are 3 datasets included within,namely, Movie Review Dataset, Spam-Ham dataset and Amazon Reviews dataset. 
     At any point you can upload your own CSV file of dataset.
+![image](https://user-images.githubusercontent.com/50980928/158045424-d42b1d4f-b4bc-4fad-8f6e-47651541d5a4.png)
+
 
 1. Data Analysis:
 
