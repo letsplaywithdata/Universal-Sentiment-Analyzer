@@ -11,11 +11,11 @@ Things we have tried to cover:
 
 
 1. Data Analysis:
-![image](https://user-images.githubusercontent.com/50980928/158045556-fa46141b-fb13-443c-99c6-e7dbccf41013.png)
 
     To make the app run faster, we have subsetted the data to include only 3000 rows (Shuffled).
     To make the full use of it, you can go to github link included in the app and run it locally through instructions from README file.
     This part is included to get a sense of dataset, view data, view shape of data and even plot the distribution of Positive and negative reviews.
+![image](https://user-images.githubusercontent.com/50980928/158045556-fa46141b-fb13-443c-99c6-e7dbccf41013.png)
 
 2. Tokenization:
 
